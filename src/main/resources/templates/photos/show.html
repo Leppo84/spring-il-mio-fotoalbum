@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Dettaglio Foto</title>
+	<div th:replace="~{fragments :: head}"></div>
+</head>
+
+<body>
+	<header class="container-fluid">
+		<div class="row col-6 m-auto">
+			<a th:href="@{/photos}" class="btn btn-secondary my-3">torna alla home</a>
+		</div>
+		<div class="row text-center">
+			<h1 class="">Dettagli foto: [[${photo.title}]]</h1>
+		</div>
+	</header>
+	<main class="container">
+		<div class="col-md-4">
+			<img th:src="${photo.getUrl()}" class="img-fluid" alt="...">
+		</div>
+		<div class="col-md-8">
+			<p class="">[[${photo.description}]]</p>
+			<h6 th:if="${photo.categories.size()>0}">Categorie: </h6>
+			<span class="col-4" th:each="category : ${photo.categories}" th:text="${category.name}"></span>
+			<span> </span>
+			<p class="">#[[${photo.tag}]]</p>
+		</div>
+	</main>
+	<div th:replace="~{fragments :: script}"></div>
+</body>
+
+</html>
