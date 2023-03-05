@@ -72,7 +72,6 @@ public class PhotoController {
 		Photo showPhoto = PhotoRepository.getReferenceById(id);
 		
 		model.addAttribute("photo", showPhoto);
-		model.addAttribute("categoryList", CategoryRepository.findAll());
 
 		return "/photos/show";
 
@@ -83,6 +82,7 @@ public class PhotoController {
 		Photo photo=PhotoRepository.getReferenceById(id);  //lo recupero dal DB
 		
 		model.addAttribute("photo", photo);
+		model.addAttribute("elencoCategorie", CategoryRepository.findAll());
 		return "/photos/edit";
 	}
 	

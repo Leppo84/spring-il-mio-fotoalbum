@@ -1,0 +1,11 @@
+INSERT INTO spring_photoalbum.photos(title, tag, description, url, visible) VALUES('Monte Bianco', "la montagna più bianca", "montagna", 'https://picsum.photos/200/150', true);
+INSERT INTO spring_photoalbum.photos(title, tag, description, url, visible) VALUES('Zozzomarina', 'il mare pulito', "mare", 'https://picsum.photos/200/150', false);
+INSERT INTO spring_photoalbum.photos(title, tag, description, url, visible) VALUES('New York', 'la grande mela', "metropoly", 'https://picsum.photos/200/150', true);
+INSERT INTO spring_photoalbum.categories(name) VALUES('viaggiare');
+INSERT INTO spring_photoalbum.categories(name) VALUES('città');
+INSERT INTO spring_photoalbum.categories(name) VALUES('moda');
+INSERT INTO spring_photoalbum.categories(name) VALUES('tecnologia');
+INSERT INTO spring_photoalbum.photos_categories(categories_id, photos_id) VALUES(1,1);
+INSERT INTO spring_photoalbum.photos_categories(categories_id, photos_id) VALUES(1,2);
+INSERT INTO spring_photoalbum.photos_categories(categories_id, photos_id) VALUES(2,3);
+INSERT INTO spring_photoalbum.photos_categories(categories_id, photos_id) VALUES(3,3);

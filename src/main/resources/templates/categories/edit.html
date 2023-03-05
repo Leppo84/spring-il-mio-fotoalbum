@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+<head>
+	<title>Modifica Categoria</title>
+	<th:block th:replace="~{fragments :: head}">
+		</th>
+</head>
+
+<body>
+	<header class="container-fluid mb3">
+		<div class="row col-6 m-auto">
+			<a th:href="@{/photos}" class="btn btn-secondary my-3">torna alla home</a>
+		</div>
+		<div class="row col-6 m-auto">
+			<a th:href="@{/categories}" class="btn btn-secondary my-3">torna alle categorie</a>
+		</div>
+		<div class="row text-center">
+			<h1>Modifica una categoria</h1>
+			<!--			<h4 th:text="${error}" class="text-danger"></h4>-->
+		</div>
+	</header>
+	<main class="container">
+		<form id="formCategory" th:object="${category}" th:action="@{/categories/edit/{id}(id=${category.id})}" method="post">
+<!--			<ul>-->
+<!--				<li th:each="err : ${#fields.allErrors()}" th:text="${err}" class="text-danger">-->
+<!--				</li>-->
+<!--			</ul>-->
+			<div class="row">
+				<div class="col-8">
+					<label for="name" class="form-label">Nome</label>
+<!--					<input type="text" class="form-control" id="name" th:field="*{name}" th:errorClass="is-invalid">-->
+					<input type="text" class="form-control" id="name" th:field="*{name}">
+					<div th:if="${#fields.hasErrors('name')}" class="invalid-feedback">
+<!--						<ul>-->
+<!--							<li th:each="err : ${#fields.errors('name')}" th:text="${err}"></li>-->
+<!--						</ul>-->
+					</div>
+
+
+
+					<button type="submit" class="btn btn-primary">Salva</button>
+					<a class="btn btn-primary" th:href="@{/categories}">Annulla</a>
+				</div>
+
+			</div>
+		</form>
+	</main>
+	<script th:replace="~{fragments :: script}"></script>
+</body>
+
+</html>

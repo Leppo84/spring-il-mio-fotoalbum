@@ -19,7 +19,7 @@
 	</header>
 	<main class="container">
 		<div class="row text-center">
-			<form class="col-12" id="photoForm" th:object="${photo}" th:action="@{/photos/edit/{id}(id=${photo.id})}"
+			<form class="col-12" id="formPhoto" th:object="${photo}" th:action="@{/photos/edit/{id}(id=${photo.id})}"
 				method="post">
 
 				<!--					<ul>-->
@@ -50,13 +50,25 @@
 					<p th:each="err : ${#fields.errors('tag')}" th:text="${err}"></p>
 				</div>
 
-				<label for="visible" class="form-label">Visibile</label>
+				<label for="visible" class="mt-3 form-label">Visibile</label>
 				<input type="checkbox" class="form-checkbox" id="visible" value="false" th:field="*{visible}" />
 
 				<div th:if="${#fields.hasErrors('visible')}" class="invalid-feedback">
 					<p th:each="err : ${#fields.errors('visible')}" th:text="${err}"></p>
 				</div>
-				
+
+				<section class="row text-center">
+					<div class="col-4">
+						<h3>Categorie: </h3>
+						<div th:each="category : ${elencoCategorie}" class="form-check">
+							<input type="checkbox" class="form-check-input" th:value="${category.id}"
+								th:field="*{categories}" th:id="|category_${category.id}">
+							<label class="form-check-label" th:text="${category.name}"
+								th:for="|category_${category.id}"></label>
+						</div>
+					</div>
+				</section>
+
 				<div class="mt-3">
 					<button type="submit" class="btn btn-primary">Salva</button>
 					<a class="btn btn-primary" th:href="@{/photos}">Annulla</a>

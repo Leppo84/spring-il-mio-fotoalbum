@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+<head>
+	<title>Categorie</title>
+	<th:block th:replace="~{fragments :: head}">
+		</th>
+</head>
+
+<body>
+	<header class="container-fluid mb3">
+		<div class="row col-6 m-auto">
+			<a th:href="@{/photos}" class="btn btn-secondary my-3">torna alla home</a>
+		</div>
+		<div class="row text-center">
+			<h1 class="">Lista categorie</h1>
+			<!--			<h4 th:text="${error}" class="text-danger"></h4>-->
+		</div>
+	</header>
+	<main class="container">
+		<div>
+
+			<a class="btn btn-primary" th:href="@{/categories/create}"><i class="fas fa-plus"></i> Crea nuova
+				categoria</a>
+		</div>
+		<div>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<td>Id</td>
+						<td>Nome</td>
+						<td>modifica</td>
+						<td>Cancella</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="category : ${elencoCategorie}">
+						<td th:text="${category.id}">
+						</td>
+						<td th:text="${category.name}"></td>
+						<td>
+							<a class="btn btn-primary" th:href="@{'/categories/edit/{id}'(id=${category.id})}"><i
+									class="fa-regular fa-pen-to-square"></i></a>
+						</td>
+						<td>
+							<form action="#" th:action="@{'/categories/delete/{id}'(id=${category.id})}" method="post">
+								<button class="btn btn-primary" type="submit" id="submitButton">
+									<i class="fas fa-trash-alt"></i>
+								</button>
+							</form>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</main>
+	<div th:replace="~{fragments :: script}"></div>
+</body>
+
+</html>

@@ -22,7 +22,7 @@
 		<div class="col-md-8">
 			<p class="">[[${photo.description}]]</p>
 			<h6 th:if="${photo.categories.size()>0}">Categorie: </h6>
-			<span class="col-4" th:each="category : ${photo.categories}" th:text="${category.name}"></span>
+			<span class="col-4" th:each="category : ${photo.getCategories()}" th:text="${category.name}"></span>
 			<span> </span>
 			<p class="">#[[${photo.tag}]]</p>
 		</div>

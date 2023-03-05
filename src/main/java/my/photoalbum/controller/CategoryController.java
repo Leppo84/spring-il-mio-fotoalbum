@@ -8,9 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jakarta.validation.Valid;
 import my.photoalbum.model.Category;
 import my.photoalbum.repository.CategoryRepository;
 import my.photoalbum.repository.PhotoRepository;
@@ -42,7 +44,7 @@ public class CategoryController {
 		return "categories/create";
 	}
 
-	@PostMapping("/create")
+	@PostMapping("categories/create")
 	public String store(
 		@ModelAttribute("category") Category formCategory, 
 		BindingResult bindingResult,
@@ -55,6 +57,42 @@ public class CategoryController {
 		
 		return "redirect:/categories";
 		
+	}
+	
+	@GetMapping("/edit/{id}")		//richieste GET del tipo /edit/xx
+	public String edit(@PathVariable("id") Integer id, Model model) {		
+		Category category=CategoryRepository.getReferenceById(id);  //lo recupero dal DB
+		
+		model.addAttribute("category", category);
+//		model.addAttribute("elencoFoto", PhotoRepository.findAll());
+		return "/categories/edit";
+	}
+	
+	@PostMapping("/edit/{id}")		//richieste POST del tipo /edit/n
+	public String update(
+			@Valid @ModelAttribute Category formCategory,
+			BindingResult bindingResult,
+			Model model) {
+		
+		if (bindingResult.hasErrors())
+			return "categories/edit";
+		
+		else
+			CategoryRepository.save(formCategory);
+		
+		
+		
+		return "redirect:/categories";
+		
+	}
+	
+
+	@PostMapping("/delete/{id}")
+	public String delete(@PathVariable("id") Integer id) {
+	 
+	   CategoryRepository.deleteById(id);
+	   
+	   return "redirect:/categories";
 	}
 	
 }
