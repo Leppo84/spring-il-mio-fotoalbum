@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jakarta.validation.Valid;
 import my.photoalbum.model.Category;
 import my.photoalbum.repository.CategoryRepository;
+import my.photoalbum.repository.CommentRepository;
 import my.photoalbum.repository.PhotoRepository;
 
 @Controller
@@ -26,6 +27,9 @@ public class CategoryController {
 
 	@Autowired
 	CategoryRepository CategoryRepository;
+	
+	@Autowired
+	CommentRepository CommentRepository;
 
 	@GetMapping()
 	public String index(Model model) {

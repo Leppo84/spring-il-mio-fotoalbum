@@ -2,15 +2,20 @@
 <html xmlns="http://www.thymeleaf.org">
 
 <head>
-	<title>Home</title>
+	<title>Amministrazione</title>
 	<th:block th:replace="~{fragments :: head}">
 		</th>
 </head>
 
 <body>
-	<header class="container-fluid mb3">
-		<div class="row col-6 m-auto">
-				<a class="btn btn-secondary my-3" th:href="@{/categories}">Vai alle categorie</a>
+	<header class="container">
+		<div class="row text-center pt-3">
+			<div class="col-6 m-auto">
+				<a class="btn btn-secondary px-5" th:href="@{/guest}">Torna all'area ospiti</a>
+			</div>
+			<div class="col-6 m-auto">
+				<a class="btn btn-secondary px-5" th:href="@{/categories}">Vai alle categorie</a>
+			</div>
 		</div>
 	</header>
 	<main class="container">

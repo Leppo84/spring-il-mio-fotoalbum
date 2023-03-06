@@ -19,7 +19,8 @@ public class SecurityConfiguration {
   	throws Exception {
     http.authorizeHttpRequests()
         .requestMatchers("/photos/create","/photos/edit/**").hasAuthority("ADMIN") 	//per creare o modificare un libro bisogna essere ADMIN
-        .requestMatchers(HttpMethod.POST, "/photos/**").hasAuthority("ADMIN")		//per fare il POST su /books (richiesto per eliminare un libro) bisogna essere ADMIN
+//        .requestMatchers(HttpMethod.POST, "/photos/**").hasAuthority("ADMIN")		//per fare il POST su /books (richiesto per eliminare un libro) bisogna essere ADMIN
+        .requestMatchers("/photos/**").hasAuthority("ADMIN")		//per fare il POST su /books (richiesto per eliminare un libro) bisogna essere ADMIN
         .requestMatchers("/categories", "/categories/**").hasAuthority("ADMIN")		//per accedere alle categorie bisogna essere ADMIN
         .requestMatchers("/photos","/photos/**").hasAnyAuthority("USER", "ADMIN") 	//per accedere all'elenco libri (/books) o dettaglio libri (/books/**) bisogna esser USER o ADMIN
         .requestMatchers("/**").permitAll()											//chiunque può accedere alla Home se esistesse

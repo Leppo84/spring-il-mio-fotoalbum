@@ -11,22 +11,16 @@ function photoList() {
             document.querySelector('#listaFoto').innerHTML+= `
             <tr>
                 <td>
-                    <a href="./detail.html?id=${foto.id}">${foto.id}</a>
+					${foto.id}
                 </td>
                 <td>${foto.title}</td>
                 <td>${foto.description}</td>
-                <td>${foto.url}</td>    
-                <td>${foto.tag}</td>    
                 <td>
-                    <a class="btn btn-primary" onclick="deletePhoto(${foto.id})">
-                        <i class="fa-solid fa-trash-can"> </i>
-                    </a>
-                </td>      
-                <td>
-                    <a class="btn btn-primary" href="./edit.html?id=${foto.id}">
-                        <i class="fa-solid fa-pen-to-square"> </i>
-                    </a>
-                </td>         
+                    <a href="./guest/show?id=${foto.id}">
+	                	<img src="${foto.url}" class="col-5 img-fluid img-thumbnail"></img>
+	                </a>
+                </td>    
+                <td>#${foto.tag}</td>          
             </tr>
             `
         });

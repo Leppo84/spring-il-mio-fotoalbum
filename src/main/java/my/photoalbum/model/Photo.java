@@ -3,8 +3,6 @@ package my.photoalbum.model;
 import java.util.List;
 //import java.util.Locale.Category;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -44,7 +42,7 @@ public class Photo {
 	@ManyToMany
 	private List<Category> categories;
 	
-	@JsonBackReference
+
 	@OneToMany(mappedBy = "photo", cascade=CascadeType.ALL)
 	private List<Comment> comments;
 	
