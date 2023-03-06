@@ -5,16 +5,16 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Comment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
+	private String content;
 	
-	@NotNull
-	private long content;
+	private String author;
 	
 	@ManyToOne
 	private Photo photo;
@@ -27,12 +27,20 @@ public class Comment {
 		this.id = id;
 	}
 
-	public long getContent() {
+	public String getContent() {
 		return content;
 	}
 
-	public void setContent(long content) {
+	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public String getauthor() {
+		return author;
+	}
+
+	public void setauthor(String author) {
+		this.author = author;
 	}
 
 	public Photo getPhoto() {
@@ -42,6 +50,5 @@ public class Comment {
 	public void setPhoto(Photo photo) {
 		this.photo = photo;
 	}
-
 	
 }

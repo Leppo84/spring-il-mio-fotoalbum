@@ -45,6 +45,7 @@ public class PhotoController {
 		Photo photo=new Photo();	//non esiste ancora sul DB
 		photo.setUrl("https://picsum.photos/400");
 		model.addAttribute("photo", photo);
+		model.addAttribute("elencoCategorie", CategoryRepository.findAll());
 		
 		return "photos/create";
 	}

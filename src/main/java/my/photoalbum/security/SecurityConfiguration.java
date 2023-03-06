@@ -22,11 +22,13 @@ public class SecurityConfiguration {
         .requestMatchers(HttpMethod.POST, "/photos/**").hasAuthority("ADMIN")		//per fare il POST su /books (richiesto per eliminare un libro) bisogna essere ADMIN
         .requestMatchers("/categories", "/categories/**").hasAuthority("ADMIN")		//per accedere alle categorie bisogna essere ADMIN
         .requestMatchers("/photos","/photos/**").hasAnyAuthority("USER", "ADMIN") 	//per accedere all'elenco libri (/books) o dettaglio libri (/books/**) bisogna esser USER o ADMIN
-        .requestMatchers("/**").permitAll()											//chiunque può accedere alla Home
+        .requestMatchers("/**").permitAll()											//chiunque può accedere alla Home se esistesse
+        .requestMatchers("/guest").permitAll()											//chiunque può accedere alle pagine front
         .and().formLogin()			//abilita il supporto al form login (auto generato)
         .and().logout()			//abilita il supporto al form logout (auto generato)
     	.and().exceptionHandling()
-    	.accessDeniedPage("/access-denied.html"); //pagina personalizzata in caso di accesso negato
+    	.accessDeniedPage("/access-denied.html") //pagina personalizzata in caso di accesso negato
+    	.and().csrf().disable();
     
     return http.build();
   }

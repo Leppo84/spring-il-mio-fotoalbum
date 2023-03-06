@@ -12,38 +12,39 @@
 		<div class="row col-6 m-auto">
 			<a th:href="@{/photos}" class="btn btn-secondary my-3">torna alla home</a>
 		</div>
+	</header>
+	<main class="container">
 		<div class="row text-center">
 			<h1 class="">Lista categorie</h1>
 			<!--			<h4 th:text="${error}" class="text-danger"></h4>-->
 		</div>
-	</header>
-	<main class="container">
-		<div>
-
-			<a class="btn btn-primary" th:href="@{/categories/create}"><i class="fas fa-plus"></i> Crea nuova
-				categoria</a>
+		<div class="row">
+			<div class="col">
+				<a class="btn btn-primary" th:href="@{/categories/create}"><i class="fas fa-plus"></i> Crea nuova
+					categoria</a>
+			</div>
 		</div>
-		<div>
+		<div class="row text-center">
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<td>Id</td>
-						<td>Nome</td>
-						<td>modifica</td>
-						<td>Cancella</td>
+						<th class="col">#</th>
+						<th class="col">Nome</th>
+						<th class="col">modifica</th>
+						<th class="col">Cancella</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="category : ${elencoCategorie}">
-						<td th:text="${category.id}">
+						<td th:text="${category.id}" class="col-2">
 						</td>
-						<td th:text="${category.name}"></td>
-						<td>
+						<td th:text="${category.name}" class="col-6"></td>
+						<td class="col-2">
 							<a class="btn btn-primary" th:href="@{'/categories/edit/{id}'(id=${category.id})}"><i
 									class="fa-regular fa-pen-to-square"></i></a>
 						</td>
-						<td>
-							<form action="#" th:action="@{'/categories/delete/{id}'(id=${category.id})}" method="post">
+						<td class="col-2">
+							<form action="#" th:action="@{'/categories/delete/{id}'(id=${category.id})}" method="post" >
 								<button class="btn btn-primary" type="submit" id="submitButton">
 									<i class="fas fa-trash-alt"></i>
 								</button>

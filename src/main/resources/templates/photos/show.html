@@ -12,19 +12,24 @@
 			<a th:href="@{/photos}" class="btn btn-secondary my-3">torna alla home</a>
 		</div>
 		<div class="row text-center">
-			<h1 class="">Dettagli foto: [[${photo.title}]]</h1>
+			<h1 class="mb-3">Dettagli foto: [[${photo.title}]]</h1>
 		</div>
 	</header>
 	<main class="container">
-		<div class="col-md-4">
-			<img th:src="${photo.getUrl()}" class="img-fluid" alt="...">
-		</div>
-		<div class="col-md-8">
-			<p class="">[[${photo.description}]]</p>
-			<h6 th:if="${photo.categories.size()>0}">Categorie: </h6>
-			<span class="col-4" th:each="category : ${photo.getCategories()}" th:text="${category.name}"></span>
-			<span> </span>
-			<p class="">#[[${photo.tag}]]</p>
+		<div class="row col-8 m-auto">
+			<div class="col-6">
+				<img th:src="${photo.getUrl()}" class="img-fluid rounded" alt="...">
+			</div>
+			<div class="row col-6">
+				<h6>Descrizione:</h6>
+				<p class="">[[${photo.description}]]</p>
+				<h6 th:if="${photo.categories.size()>0}">Categorie: </h6>
+				<div class="col-6" th:each="category : ${photo.getCategories()}">
+					<p class="" th:text="${category.name}"></p>
+				</div>
+				<hr>
+				<p class="">#[[${photo.tag}]]</p>
+			</div>
 		</div>
 	</main>
 	<div th:replace="~{fragments :: script}"></div>
